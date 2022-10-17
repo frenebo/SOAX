@@ -932,7 +932,7 @@ void Snake::CheckBodyOverlap(const SnakeContainer &converged_snakes, const std::
   if (overlap_end != vertices_.end()) {
     this->TryInitializeFromPart(overlap_end-1, vertices_.end(), true);
     this->TryInitializeFromPart(vertices_.begin(), overlap_start+1, true);
-    std::cout << "Snake::CheckBodyOverlap(): Snake die, overlap end is not vertices end. Body overlap detected" << std::cout;
+    std::cout << "Snake::CheckBodyOverlap(): Snake die, overlap end is not vertices end. Body overlap detected" << std::endl;
     viable_ = false;
     // std::cout << "\nbody overlap detected." << std::endl;
   }
