@@ -191,12 +191,15 @@ void Snake::Evolve(SolverBank *solver, const SnakeContainer &converged_snakes,
                    unsigned max_iter, unsigned dim, const std::vector<std::vector<IndexPairContainer > >  &converged_snakes_grid) {
   unsigned iter = 0;
   
-  std::cout << "Converged snakes grid size: " << converged_snakes_grid.size() << std::endl;
+  // std::cout << "Converged snakes grid size: " << converged_snakes_grid.size() << std::endl;
+  
+  std::cout << "Snake sizes: ";
 
   
   while (iter <= max_iter) {
+    std::cout << GetSize() <<" "
     if (iterations_ >= max_iterations_)  {
-      // std::cout << this << " reaches maximum iterations." << std::endl;
+      // std::cout << "Converged by reaching max iterations" << std::endl;
       converged_ = true;
       break;
     }
@@ -218,6 +221,7 @@ void Snake::Evolve(SolverBank *solver, const SnakeContainer &converged_snakes,
     iter++;
     if (!viable_)  break;    
   }
+  std::cout << std::endl;
   this->CheckBodyOverlap(converged_snakes, converged_snakes_grid);
 }
 
