@@ -75,6 +75,7 @@ void Snake::Resample() {
 
   if (vertices_.size() < 2) {
     std::cout << "Snake::Resample() Snake die: size less than 2!" << std::endl;
+    // std::cout << vertices_[0]
     viable_ = false;
     return;
   }
@@ -119,6 +120,22 @@ void Snake::Resample() {
   // } else if (!converged_) {
   //   viable_ = vertices_.size() >= kMinimumEvolvingSize;
   // }
+}
+
+void Snake::LogPts() const {
+  std::cout << "pts: "
+  for (unsigned i = 0; i < vertices_.size(); ++i) {
+    std::cout << "("
+    // current_length += vertices_[i].EuclideanDistanceTo(vertices_[i-1]);
+    for (unsigned k = 0; k < kDimension; ++k) {
+      if (k != 0) std::cout ", "
+      std::cout << vertices_.at(i)[k];
+      // if (k )
+      // sums[k].push_back(std::make_pair(current_length, vertices_.at(i)[k]));
+    }
+    
+    std::cout << ") ";
+  }
 }
 
 void Snake::UpdateLength(PairContainer *sums) {

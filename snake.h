@@ -37,6 +37,8 @@ class Snake {
 
   bool initial_state() const {return initial_state_;}
   void set_initial_state(bool initial) {initial_state_ = initial;}
+  
+  void Snake::LogPts() const;
 
   unsigned GetSize() const {return vertices_.size();}
   double GetX(unsigned i) const {return vertices_.at(i)[0];}
