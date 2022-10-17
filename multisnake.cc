@@ -671,13 +671,15 @@ void Multisnake::DeformSnakes() {
   this->ClearConvergedSnakesGrid();
   
   while (!initial_snakes_.empty()) {
+    std::cout << std::endl;
+    std::cout << "Size of initial_snakes before popping off snake is" << initial_snakes_.size() << std::endl;
     Snake *snake = initial_snakes_.back();
     initial_snakes_.pop_back();
     solver_bank_->Reset(false);
     snake->Evolve(solver_bank_, converged_snakes_, kBigNumber, dim_, converged_snakes_grid_);
 
     if (snake->viable()) {
-      std::cout << std::endl;
+      // std::cout << std::endl;
       std::cout << "Snake is viable" << std::endl;
       converged_snakes_.push_back(snake);
       
@@ -714,7 +716,7 @@ void Multisnake::DeformSnakes() {
           this->AddConvergedSnakeIndexesToGrid(org_x_grid, org_y_grid, curr_index_snake, s);
       }
     } else {
-      std::cout << std::endl;
+      // std::cout << std::endl;
       std::cout << "Inserting subsnakes" << std::endl;
       std::cout << "Number of sub snakes: " << snake->subsnakes().size() << std::endl;
       
