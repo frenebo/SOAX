@@ -712,6 +712,9 @@ void Multisnake::DeformSnakes() {
           this->AddConvergedSnakeIndexesToGrid(org_x_grid, org_y_grid, curr_index_snake, s);
       }
     } else {
+      std::cout << "Inserting subsnakes" << std::endl;
+      std::cout << "Number of sub snakes: " << snake->subsnakes().size() << std::endl;
+      
       initial_snakes_.insert(initial_snakes_.end(),
                              snake->subsnakes().begin(),
                              snake->subsnakes().end());
