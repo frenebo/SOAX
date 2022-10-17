@@ -74,7 +74,7 @@ void Snake::Resample() {
   if (!viable_) return;
 
   if (vertices_.size() < 2) {
-    // std::cout << "Snake die: size less than 2!" << std::endl;
+    std::cout << "Snake::Resample() Snake die: size less than 2!" << std::endl;
     viable_ = false;
     return;
   }
@@ -84,6 +84,7 @@ void Snake::Resample() {
   PairContainer sums[kDimension];
   this->UpdateLength(sums);
   if (length_ < spacing) {
+    std::cout << "Snake::Resample() Snake die: Length less than spacing!" << std::endl;
     viable_ = false;
     return;
   }
@@ -93,10 +94,22 @@ void Snake::Resample() {
 
   if (final_) {
     viable_ = length_ > minimum_length_;
+    if (!(length_ > minimum_length_)) {
+      
+      std::cout << "Snake::Resample() Snake die: Length less than or equal to minimum length!" << std::endl;
+    }
   } else if (grouping_) {
     viable_ = length_ > grouping_distance_threshold_;
+    
+    if (length_ <= grouping_distance_threshold_) {
+      std::cout << "Snake::Resample() Snake die: Length under grouping_distance_threshold" << std::endl;
+    }
   } else {
     viable_ = vertices_.size() >= kMinimumEvolvingSize;
+    
+    if (vertices_.size() < kMinimumEvolvingSize) {
+      std::cout << "Snake::Resample() Snake die: vertex size less than kMinimumEvolvingSize" << std::endl;
+    }
   }
 
   // if (final_ || !open_) {
@@ -217,7 +230,7 @@ void Snake::CheckSelfIntersection() {
         this->TryInitializeFromPart(vertices_.begin(), it1, true);
         this->TryInitializeFromPart(it2, vertices_.end(), true);
         this->TryInitializeFromPart(it1, it2, false);
-        // std::cout << "\nSelf-intersection detected!" << std::endl;
+        std::cout << std::endl << "Snake::CheckSelfIntersection(): Snake die - Self-intersection detected!" << std::endl;
         viable_ = false;
         return;
       }
@@ -262,7 +275,7 @@ void Snake::HandleHeadOverlap(const SnakeContainer &converged_snakes, const std:
   // if there is an overlap  
   if (first_detach != start) {
     if (first_detach == vertices_.end()) {
-      // std::cout << "head: total overlap!" << std::endl;
+      std::cout << "Snake::HandleHeadOverlap(): head: total overlap!" << std::endl;
       viable_ = false;
     } else {
       
@@ -297,7 +310,7 @@ void Snake::HandleTailOverlap(const SnakeContainer &converged_snakes, const std:
 
   if (first_detach != start) {
     if (first_detach == vertices_.begin()) {
-      // std::cout << "tail: total overlap!" << std::endl;
+      std::cout << "Snake::HandleTailOverlap(): tail: total overlap!" << std::endl;
       viable_ = false;
     } else {
         
@@ -919,6 +932,7 @@ void Snake::CheckBodyOverlap(const SnakeContainer &converged_snakes, const std::
   if (overlap_end != vertices_.end()) {
     this->TryInitializeFromPart(overlap_end-1, vertices_.end(), true);
     this->TryInitializeFromPart(vertices_.begin(), overlap_start+1, true);
+    std::cout << "Snake::CheckBodyOverlap(): Snake die, overlap end is not vertices end. Body overlap detected" << std::cout;
     viable_ = false;
     // std::cout << "\nbody overlap detected." << std::endl;
   }
