@@ -671,7 +671,7 @@ void Multisnake::DeformSnakes() {
   this->ClearConvergedSnakesGrid();
   
   while (!initial_snakes_.empty()) {
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
     std::cout << "Size of initial_snakes before popping off snake is " << initial_snakes_.size() << std::endl;
     Snake *snake = initial_snakes_.back();
     initial_snakes_.pop_back();
