@@ -197,7 +197,7 @@ void Snake::Evolve(SolverBank *solver, const SnakeContainer &converged_snakes,
 
   
   while (iter <= max_iter) {
-    std::cout << GetSize() <<" "
+    std::cout << GetSize() << " ";
     if (iterations_ >= max_iterations_)  {
       // std::cout << "Converged by reaching max iterations" << std::endl;
       converged_ = true;
