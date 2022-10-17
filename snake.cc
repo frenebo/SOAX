@@ -75,6 +75,7 @@ void Snake::Resample() {
 
   if (vertices_.size() < 2) {
     std::cout << "Snake::Resample() Snake die: size less than 2!" << std::endl;
+    LogPts();
     // std::cout << vertices_[0]
     viable_ = false;
     return;
@@ -110,6 +111,7 @@ void Snake::Resample() {
     
     if (vertices_.size() < kMinimumEvolvingSize) {
       std::cout << "Snake::Resample() Snake die: vertex size less than kMinimumEvolvingSize" << std::endl;
+      LogPts();
     }
   }
 
@@ -248,6 +250,7 @@ void Snake::CheckSelfIntersection() {
         this->TryInitializeFromPart(it2, vertices_.end(), true);
         this->TryInitializeFromPart(it1, it2, false);
         std::cout << std::endl << "Snake::CheckSelfIntersection(): Snake die - Self-intersection detected!" << std::endl;
+        LogPts();
         viable_ = false;
         return;
       }
