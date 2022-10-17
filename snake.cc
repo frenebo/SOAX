@@ -190,6 +190,8 @@ void Snake::InterpolateVertices(const PairContainer *sums,
 void Snake::Evolve(SolverBank *solver, const SnakeContainer &converged_snakes,
                    unsigned max_iter, unsigned dim, const std::vector<std::vector<IndexPairContainer > >  &converged_snakes_grid) {
   unsigned iter = 0;
+  
+  std::cout << "Converged snakes grid size: " << converged_snakes_grid.size() << std::endl;
 
   
   while (iter <= max_iter) {
