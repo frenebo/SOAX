@@ -722,7 +722,7 @@ void Multisnake::DeformSnakes() {
       std::cout << "Number of sub snakes: " << snake->subsnakes().size() << std::endl;
       
       for (unsigned i = 0; i < snake->subsnakes().size(); i++) {
-        std::cout << "Size of subsnakes[" << i <, "]:" << snake->subsnakes().at(i).GetSize() << std::endl;
+        std::cout << "Size of subsnakes[" << i <, "]:" << snake->subsnakes().at(i)->GetSize() << std::endl;
       }
       
       
