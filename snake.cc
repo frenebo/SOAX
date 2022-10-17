@@ -247,10 +247,16 @@ void Snake::CheckSelfIntersection() {
          it2 != vertices_.end(); ++it2) {
       double d = (*it1).EuclideanDistanceTo(*it2);
       if (d < 1.0 && !this->TipsStopAtSameLocation()) {
-        this->TryInitializeFromPart(vertices_.begin(), it1, true);
-        this->TryInitializeFromPart(it2, vertices_.end(), true);
-        this->TryInitializeFromPart(it1, it2, false);
+        unsigned idx1 = it1 - vertices_.begin();
+        unsigned idx2 = it2 - vertices_.begin();
+        
         std::cout << std::endl << "Snake::CheckSelfIntersection(): Snake die - Self-intersection detected! In snake of size " << vertices_.size() << std::endl;
+        std::cout << "Initializing from 0 to " << idx1 << std::endl;
+        this->TryInitializeFromPart(vertices_.begin(), it1, true);
+        std::cout << "Initializing from " << idx2 << " to " << (vertices_.end() - vertices_.begin()) << std::endl;
+        this->TryInitializeFromPart(it2, vertices_.end(), true);
+        std::cout << "Initializing from " << idx1 << "to " << idx2 << std::endl;
+        this->TryInitializeFromPart(it1, it2, false);
         // std::cout << ""
         // LogPts();
         viable_ = false;
@@ -277,7 +283,9 @@ void Snake::TryInitializeFromPart(PointIterator it1, PointIterator it2,
   s->Resample();
   if (s->viable()) {
     subsnakes_.push_back(s);
+    std::cout << "  Subsnake is viable!" << std::endl;
   } else {
+    std::cout << "  Subsnake is not viable" << std::endl;
     delete s;
   }
 }
