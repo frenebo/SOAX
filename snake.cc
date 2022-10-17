@@ -130,7 +130,7 @@ void Snake::LogPts() const {
     std::cout << "(";
     // current_length += vertices_[i].EuclideanDistanceTo(vertices_[i-1]);
     for (unsigned k = 0; k < kDimension; ++k) {
-      if (k != 0) std::cout ", "
+      if (k != 0) std::cout << ", ";
       std::cout << vertices_.at(i)[k];
       // if (k )
       // sums[k].push_back(std::make_pair(current_length, vertices_.at(i)[k]));
@@ -138,6 +138,7 @@ void Snake::LogPts() const {
     
     std::cout << ") ";
   }
+  std::cout << std::endl;
 }
 
 void Snake::UpdateLength(PairContainer *sums) {
