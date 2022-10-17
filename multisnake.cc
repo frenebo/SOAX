@@ -676,7 +676,9 @@ void Multisnake::DeformSnakes() {
     Snake *snake = initial_snakes_.back();
     initial_snakes_.pop_back();
     solver_bank_->Reset(false);
+    std::cout << "  Last snake size before evolving: " << snake->GetSize() <<std::endl;
     snake->Evolve(solver_bank_, converged_snakes_, kBigNumber, dim_, converged_snakes_grid_);
+    std::cout << "  Last snake size after evolving: " << snake->GetSize() << std::endl;
     // std::cout << "Size of initial_snakes after popping off snake is " << initial_snakes_.size() << std::endl;
 
     if (snake->viable()) {
