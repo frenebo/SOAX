@@ -721,6 +721,11 @@ void Multisnake::DeformSnakes() {
       std::cout << "Inserting subsnakes" << std::endl;
       std::cout << "Number of sub snakes: " << snake->subsnakes().size() << std::endl;
       
+      for (unsigned i = 0; i < snake->subsnakes().size(); i++) {
+        std::cout << "Size of subsnakes[" << i <, "]:" << snake->subsnakes().at(i).GetSize() << std::endl;
+      }
+      
+      
       initial_snakes_.insert(initial_snakes_.end(),
                              snake->subsnakes().begin(),
                              snake->subsnakes().end());
