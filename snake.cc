@@ -110,7 +110,7 @@ void Snake::Resample() {
     viable_ = vertices_.size() >= kMinimumEvolvingSize;
     
     if (vertices_.size() < kMinimumEvolvingSize) {
-      std::cout << "Snake::Resample() Snake die: vertex size less than kMinimumEvolvingSize" << std::endl;
+      std::cout << "  Snake::Resample() Snake die: vertex size less than kMinimumEvolvingSize" << kMinimumEvolvingSize << std::endl;
       LogPts();
     }
   }
@@ -125,7 +125,7 @@ void Snake::Resample() {
 }
 
 void Snake::LogPts() const {
-  std::cout << "pts: ";
+  std::cout << "  pts: ";
   for (unsigned i = 0; i < vertices_.size(); ++i) {
     std::cout << "(";
     // current_length += vertices_[i].EuclideanDistanceTo(vertices_[i-1]);
