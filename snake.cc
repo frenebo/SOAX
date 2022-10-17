@@ -250,7 +250,7 @@ void Snake::CheckSelfIntersection() {
         unsigned idx1 = it1 - vertices_.begin();
         unsigned idx2 = it2 - vertices_.begin();
         
-        std::cout << std::endl << "Snake::CheckSelfIntersection(): Snake die - Self-intersection detected! In snake of size " << vertices_.size() << std::endl;
+        std::cout << "Snake::CheckSelfIntersection(): Snake die - Self-intersection detected! In snake of size " << vertices_.size() << std::endl;
         std::cout << "Initializing from 0 to " << idx1 << std::endl;
         this->TryInitializeFromPart(vertices_.begin(), it1, true);
         std::cout << "Initializing from " << idx2 << " to " << (vertices_.end() - vertices_.begin()) << std::endl;
