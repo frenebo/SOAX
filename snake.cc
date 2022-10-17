@@ -250,8 +250,9 @@ void Snake::CheckSelfIntersection() {
         this->TryInitializeFromPart(vertices_.begin(), it1, true);
         this->TryInitializeFromPart(it2, vertices_.end(), true);
         this->TryInitializeFromPart(it1, it2, false);
-        std::cout << std::endl << "Snake::CheckSelfIntersection(): Snake die - Self-intersection detected!" << std::endl;
-        LogPts();
+        std::cout << std::endl << "Snake::CheckSelfIntersection(): Snake die - Self-intersection detected! In snake of size " << vertices_.size() << std::endl;
+        // std::cout << ""
+        // LogPts();
         viable_ = false;
         return;
       }
