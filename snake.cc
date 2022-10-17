@@ -125,7 +125,7 @@ void Snake::Resample() {
 }
 
 void Snake::LogPts() const {
-  std::cout << "pts: "
+  std::cout << "pts: ";
   for (unsigned i = 0; i < vertices_.size(); ++i) {
     std::cout << "(";
     // current_length += vertices_[i].EuclideanDistanceTo(vertices_[i-1]);
